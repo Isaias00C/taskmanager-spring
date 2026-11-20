@@ -26,6 +26,11 @@ public class Tarefa {
     @Enumerated(EnumType.STRING)
     private Prioridade prioridade = Prioridade.MEDIA;
 
+    // Receber a chave estrangeira do usuario
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
     public Tarefa(){
     }
 
@@ -33,6 +38,14 @@ public class Tarefa {
         this.titulo = titulo;
         this.descricao = descricao;
         this.prioridade = prioridade;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Long getId() {
